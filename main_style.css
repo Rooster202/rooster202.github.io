@@ -1,0 +1,23 @@
+h1, ul, h4 {
+	font-family: arial;
+}
+
+.list_l1 {
+	font-size: 150%;
+}
+
+h1 {
+	color: red;
+	font-size: 250%;
+	text-transform: uppercase;
+	text-align: center;
+	<!-- font-family: Copperplate,Copperplate Gothic Light,fantasy; -->
+}
+
+h4 {
+	font-size: 130%
+}
+
+h5 {
+	font-size: 80%;
+}
