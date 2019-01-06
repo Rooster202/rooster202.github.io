@@ -1,4 +1,4 @@
-h1, ul, h4 {
+h1, ul, h4, h3 {
 	font-family: arial;
 }
 
@@ -20,4 +20,8 @@ h4 {
 
 h5 {
 	font-size: 80%;
+}
+
+.center {
+	text-align: center;
 }
