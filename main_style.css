@@ -7,11 +7,14 @@ h1, ul, h4, h3 {
 }
 
 h1 {
+	letter-spacing: 0.5em;
 	color: red;
 	font-size: 250%;
 	text-transform: uppercase;
 	text-align: center;
-	<!-- font-family: Copperplate,Copperplate Gothic Light,fantasy; -->
+	font-family: "space mono", monospace;
+	/*font-family: Copperplate,Copperplate Gothic Light,fantasy;*/
+	margin-top: 0;
 }
 
 h4 {
@@ -19,6 +22,7 @@ h4 {
 }
 
 h5 {
+	margin-top: 5px;
 	font-size: 80%;
 }
 
