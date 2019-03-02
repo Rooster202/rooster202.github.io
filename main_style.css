@@ -1,5 +1,5 @@
 body {
-	background-image: url(./background.jpg)
+	background-image: url(./backgrounds/background.jpg);
 }
 
 h1, ul, h4, h3 {
@@ -8,6 +8,10 @@ h1, ul, h4, h3 {
 
 ul {
 	list-style: square inside;
+}
+
+li {
+	padding: 5px 0;
 }
 
 .list_l1 {
@@ -38,8 +42,8 @@ h1 {
 	font-size: 250%;
 	text-transform: uppercase;
 	text-align: center;
-	font-family: "space mono", monospace;
-	/*font-family: Copperplate,Copperplate Gothic Light,fantasy;*/
+	/*font-family: "space mono", monospace;*/
+	font-family: Copperplate,Copperplate Gothic Light,fantasy;
 	margin-top: 40px;
 	border: 10px solid white;
 	border-radius: 80%;
