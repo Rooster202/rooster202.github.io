@@ -27,11 +27,23 @@ document.getElementById("DBT_6").onclick = function () {
 
 document.getElementById("DBT_7").onclick = function () {
 	document.body.style.backgroundImage = "url('./backgrounds/background7.gif')";
-	clicked_r2 = true;
 };
 
 document.getElementById("DBT_8").onclick = function () {
 	document.body.style.backgroundImage = "url('./backgrounds/background8.gif')";
+};
+
+document.getElementById("DBT_9").onclick = function () {
+	document.body.style.backgroundImage = "url('./backgrounds/background9.gif')";
+};
+
+document.getElementById("DBT_10").onclick = function () {
+	document.body.style.backgroundImage = "url('./backgrounds/background10.gif')";
+};
+
+document.getElementById("DBT_11").onclick = function () {
+	document.body.style.backgroundImage = "url('./backgrounds/background11.gif')";
+	clicked_r2 = true;
 };
 
 document.getElementById("DBT_theRest").onclick = function () {
