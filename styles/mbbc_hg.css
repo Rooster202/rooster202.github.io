@@ -1,0 +1,52 @@
+.nav {
+	position: fixed;
+	display: block;
+	margin-top: 0px;
+	font-size: 70%;
+	color: Black;
+	background-color: rgba(0,0,0, 0.2);
+	padding: 10px;
+	margin-left: 0%;
+	border: 1px solid black;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.content {
+	margin-left: 1%;
+}
+
+.center {
+	text-align: center;
+}
+
+#login_message, #sign_up_message {
+	color: red;
+}
+
+#user_home_page {
+	display = "none;
+}
+
+#sign_up_page {
+	display: none;
+}
+
+.user_stat_tittle {
+	font-weight: bold;
+	/*border: 2px solid black;*/
+}
+
+
+
+#sign_up_b1 {
+	display = inline;
+}
+
+/*
+#login_form {
+	display: none;
+}
+*/
