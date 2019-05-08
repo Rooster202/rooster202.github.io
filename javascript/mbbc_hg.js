@@ -32,9 +32,11 @@ const rulesPage = document.querySelector("#rules_page");
 db.collection("users").get().then((docs) => {
 	allDocs = docs;
 	logIn(docs);
+	/*
 	docs.forEach((doc) => {
 		console.log(doc.data());
 	})
+	*/
 })
 
 
