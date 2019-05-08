@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<title>MBBC Hunger Games</title>
+		<link type="text/css" href="./styles/mbbc_hg.css" rel="stylesheet">
+		<script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-firestore.js"></script>
+	</header>
+	
+	<body>
+		<h5 class="nav">Made by <a href="./index.html" target="_blank">Reuben Richardson</a>, Heath Gaydon, <a href="https://nebrok.github.io/" target="_blank">Korben Lyall Wilson</a> and Lachlan Hunter</h5>
+		<br>
+		<h1 class="center">MBBC Hunger Games</h1>
+
+		<div class="content">
+			<form id="login_form">
+				<br>
+				<p>Welcome to the school-wide and web-hosted student Hungergames for the MBBC community!</p>
+				<br>
+				<h2>Log In</h2>
+				<input name="login_name" placeholder="Name" required maxlength="20"></input><span>(Your first name + the first letter of surname)</span>
+				<br><br>
+				<input name="login_password" placeholder="Password" required maxlength="20" type="password"></input><button id="show_password_b1" type="button">Show</button>
+				<p id="login_message"></p>
+				<input type="submit" value="Log-In"></input>
+			</form>
+			
+			<div id="user_home_page">
+				<br>
+				<p></p>
+				<span class="user_stats"></span>
+			</div>
+			<div id="sign_up_for_homepage">
+				<span>Don't have an account?</span><button id="sign_up_b1" type="button">Sign up</button>
+			</div>
+			<div id="sign_up_page">
+				<u><h2>Sign-up!!</h2></u>
+				<p id="sign_up_message_before">Only MBBC students in high school can play MBBC Hunger Games. If you are a high school MBBC student, please fill out the form below. If you are a teacher or parent who wants a spectator account, email Reuben at: 20richar@mbbc.qld.edu.au</p>
+				<br><br>
+				<form id="sign_up_form">
+					<span class="bold">School Email: </span><input name="email_num" type="number" min="19" max="30" placeholder="E.g. 21" required></input><input required name="email_string" placeholder="E.g.Smithj"></input><span>@mbbc.qld.edu.au</span><br>
+					<span>[Graduation Num] + [First 5 letters of surname + First letter of first name]</span><br>
+					<br>
+					<label for="username" class="bold">Username: </label>
+					<input name="username" required maxlength="20"></input><br>
+					<span>[Your surname + the first letter of your first name]</span>
+					<br><br>
+					<label for="password" class="bold">Password: </label>
+					<input name="password" required maxlength="20" type="password"></input><button id="show_password_b2" type="button">Show</button>
+					<!--
+					<label for="first_name" class="bold">First Name:</label>
+					<input name="first_name"></input><br><br>
+					<label for="last_name" class="bold">Last Name:</label>
+					<input name="last_name"></input><br><br>
+					-->
+					<br><br><br>
+					<p id="sign_up_message"></p>
+					<input type="submit"></input>
+				</form>
+			</div>
+			
+			<div id="rules_page">
+				<h2>Rules</h2>
+				<ol>
+					<li>Rule</li>
+					<li>Rule</li>
+					<li>Rule</li>
+					<li>Rule</li>
+					<li>Rule</li>
+					<li>Rule</li>
+				</ol>
+			</div>
+		</div>
+		
+		<script>
+		  // Initialize Firebase
+		  var config = {
+			apiKey: "AIzaSyCTmZUb-Db9Gcb-wOIsyiRiqI5siJ_uDIM",
+			authDomain: "hungergames-2bdd0.firebaseapp.com",
+			databaseURL: "https://hungergames-2bdd0.firebaseio.com",
+			projectId: "hungergames-2bdd0",
+			storageBucket: "hungergames-2bdd0.appspot.com",
+			messagingSenderId: "658652918297"
+		  };
+		  firebase.initializeApp(config);
+		  const db = firebase.firestore();
+		</script>
+		<script src="./javascript/mbbc_hg.js"></script>
+	</body>
+</html>

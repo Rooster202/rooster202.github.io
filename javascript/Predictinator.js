@@ -2,6 +2,7 @@ console.log("teeest")
 console.log("teeeegnrgbrust")
 
 let qnum = 5;
+let clickk = false;
 
 /*
 for(let i = 2; i <= qnum; i++){
@@ -9,11 +10,16 @@ for(let i = 2; i <= qnum; i++){
 }
 */
 
+
+
 for(let i = 1; i < qnum; i++){
-	document.querySelector("#question"+String(i)+" button").onclick = function () {
-		console.log("clicdk")
-		document.getElementById("question"+String(i+1)).style.display = "block";
-};
+	if (clickk === false){
+		document.querySelector("#question"+String(i)+" button").onclick = function () {
+			console.log("clicdk")
+			document.getElementById("question"+String(i)+1).style.display = "block";
+			clickk = true;
+		};
+	};
 }
 
 
