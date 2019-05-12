@@ -14,6 +14,8 @@ const userHomePage = document.querySelector("#user_home_page");
 const Tittle = document.querySelector("body h1");
 const userWelcomeMessage = document.querySelector("#user_home_page p");
 const userStatBox = document.querySelector("#user_home_page .user_stats");
+const userKillButton = document.querySelector("#kill_button");
+const userSurvivedButton = document.querySelector("#survived_button");
 
 const signUpForHomepage = document.querySelector("#sign_up_for_homepage");
 const signUpB1 = document.querySelector("#sign_up_b1");
@@ -27,11 +29,16 @@ let lastUsername = "";
 let lastEmail = "";
 const signUpMessageBefore = document.querySelector("#sign_up_message_before");
 
+const leaderboardDiv = document.querySelector("#leaderboard");
+const leaderboardDivOl = document.querySelector("#leaderboard ol");
+
 const rulesPage = document.querySelector("#rules_page");
 
-db.collection("users").get().then((docs) => {
+db.collection("users").orderBy("total_score").get().then((docs) => {
 	allDocs = docs;
 	logIn(docs);
+	renderLeaderboard();
+	//addthing();
 	/*
 	docs.forEach((doc) => {
 		console.log(doc.data());
@@ -41,13 +48,23 @@ db.collection("users").get().then((docs) => {
 
 
 // USER HOMEPAGE
-function buildUserHomePage(userData){
+function buildUserHomePage(userData, user){
 	loginForm.style.display = "none";
 	signUpForHomepage.style.display = "none";
 	Tittle.innerHTML = userData.name+" - Homepage";
 	userHomePage.style.display = "block";
 	userWelcomeMessage.innerHTML = "Welcome, "+userData.name+"! Unfortunately the next hunger game hasn't started yet, but you can veiw your user stats below:";
-	userStatBox.innerHTML = "<span class='user_stat_tittle'>Name: </span>"+userData.name+"<br><span class='user_stat_tittle'>Email: </span>"+userData.email+"<br><span class='user_stat_tittle'>Usertype: </span>"+userData.type+"<br><span class='user_stat_tittle'>Date created: </span>"+userData.date+"<br><span class='user_stat_tittle'>Status: </span>"+userData.status;
+	userStatBox.innerHTML = "<span class='user_stat_tittle'>Name: </span>"+userData.name+"<br><span class='user_stat_tittle'>Email: </span>"+userData.email+"<br><span class='user_stat_tittle'>Usertype: </span>"+userData.type+"<br><span class='user_stat_tittle'>Date created: </span>"+userData.date+"<br><span class='user_stat_tittle'>Status: </span>"+userData.status+"<br><span class='user_stat_tittle'>Kills (1pt): </span>"+userData.kills+"<br><span class='user_stat_tittle'>Survived (10pts): </span>"+userData.survived/10+"<br><span class='user_stat_tittle'>Total points: </span>"+Number(userData.kills+userData.survived);
+	userKillButton.addEventListener("click", (e) => {
+		db.collection("users").doc(user.id).update({
+			kills: userData.kills+1
+		})
+	})
+	userSurvivedButton.addEventListener("click", (e) => {
+		db.collection("users").doc(user.id).update({
+			survived: userData.survived+10
+		})
+	})
 }
 
 // LOG IN CODE
@@ -59,7 +76,7 @@ function logIn(docs){
 				let userData = doc.data();
 				console.log(userData.name+" has logged in");
 				logged_in = true;
-				buildUserHomePage(userData);
+				buildUserHomePage(userData, doc);
 			}
 		})
 		if (logged_in === false){
@@ -116,7 +133,9 @@ signUpForm.addEventListener("submit", (e) => {
 			password: signUpForm.password.value,
 			type: "player",
 			date: Date(),
-			status: "alive"
+			status: "alive",
+			kills: 0,
+			survived: 0
 		})
 		lastUsername = signUpForm.username.value;
 		lastEmail = signUpForm.email_num.value+signUpForm.email_string.value+"@mbbc.qld.edu.au";
@@ -126,6 +145,15 @@ signUpForm.addEventListener("submit", (e) => {
 	}
 })
 
+//leaderbourd code
+function renderLeaderboard(){
+	allDocs.forEach((doc) => {
+		let nli = document.createElement("li");
+		nli.innerHTML = "<span class='bold'>"+doc.data().name+":</span> "+doc.data().total_score+"pts";
+		leaderboardDivOl.insertBefore(nli, leaderboardDivOl.childNodes[0]);
+	})
+}
+
 
 //Data deletion tool
 function deletee(nombre){
@@ -134,6 +162,14 @@ function deletee(nombre){
 			db.collection("users").doc(doc.id).delete();
 			console.log(doc.id+" deleted");
 		}
+	})
+}
+
+function addthing(){
+	allDocs.forEach((doc) => {
+		db.collection("users").doc(doc.id).update({
+			total_score: doc.data().kills+doc.data().survived
+		})
 	})
 }
 
