@@ -135,7 +135,8 @@ signUpForm.addEventListener("submit", (e) => {
 			date: Date(),
 			status: "alive",
 			kills: 0,
-			survived: 0
+			survived: 0,
+			total_score: 0
 		})
 		lastUsername = signUpForm.username.value;
 		lastEmail = signUpForm.email_num.value+signUpForm.email_string.value+"@mbbc.qld.edu.au";
@@ -156,14 +157,19 @@ function renderLeaderboard(){
 
 
 //Data deletion tool
-function deletee(nombre){
+/*
+function deletee(){
 	allDocs.forEach((doc) => {
+		db.collection("users").doc(doc.id).delete();
+		
 		if (doc.data().name === nombre){
 			db.collection("users").doc(doc.id).delete();
 			console.log(doc.id+" deleted");
-		}
+		
 	})
 }
+*/
+
 
 function addthing(){
 	allDocs.forEach((doc) => {
