@@ -27,7 +27,7 @@
 }
 
 #user_home_page {
-	display = "none;
+	display: none;
 }
 
 #sign_up_page {
@@ -40,12 +40,12 @@
 }
 
 
-
+/*
 #sign_up_b1 {
 	display = inline;
 }
 
-/*
+
 #login_form {
 	display: none;
 }
