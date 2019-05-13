@@ -58,12 +58,16 @@ function buildUserHomePage(userData, user){
 	userKillButton.addEventListener("click", (e) => {
 		db.collection("users").doc(user.id).update({
 			kills: userData.kills+1
+			
 		})
 	})
 	userSurvivedButton.addEventListener("click", (e) => {
 		db.collection("users").doc(user.id).update({
 			survived: userData.survived+10
 		})
+	})
+	db.collection("users").doc(user.id).update({
+		total_score: Number(userData.kills+userData.survived)
 	})
 }
 
