@@ -70,7 +70,7 @@ ans_form.addEventListener("submit", (e) => {
 	next_question();
 })
 
-ti = 10;
+ti = 300;
 
 
 function next_second(){
