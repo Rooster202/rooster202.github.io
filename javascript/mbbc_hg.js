@@ -37,7 +37,15 @@ const rulesPage = document.querySelector("#rules_page");
 db.collection("users").orderBy("total_score").get().then((docs) => {
 	allDocs = docs;
 	logIn(docs);
+	/*
+	docs.forEach((doc) => {
+		db.collection("users").doc(doc.id).update({
+			total_score: Number(doc.data().kills+doc.data().survived)
+		})
+	})
+	*/
 	renderLeaderboard();
+
 	//addthing();
 	/*
 	docs.forEach((doc) => {
@@ -66,9 +74,7 @@ function buildUserHomePage(userData, user){
 			survived: userData.survived+10
 		})
 	})
-	db.collection("users").doc(user.id).update({
-		total_score: Number(userData.kills+userData.survived)
-	})
+
 }
 
 // LOG IN CODE
@@ -153,11 +159,15 @@ signUpForm.addEventListener("submit", (e) => {
 //leaderbourd code
 function renderLeaderboard(){
 	allDocs.forEach((doc) => {
+		db.collection("users").doc(doc.id).update({
+			total_score: Number(doc.data().kills+doc.data().survived)
+		})
 		let nli = document.createElement("li");
 		nli.innerHTML = "<span class='bold'>"+doc.data().name+":</span> "+doc.data().total_score+"pts";
 		leaderboardDivOl.insertBefore(nli, leaderboardDivOl.childNodes[0]);
 	})
 }
+
 
 
 //Data deletion tool

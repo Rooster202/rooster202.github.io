@@ -1,7 +1,7 @@
 console.log("teeest")
 console.log("teeeegnrgbrust")
 
-let qnum = 5;
+let qnum = 4;
 let clickk = false;
 
 /*
