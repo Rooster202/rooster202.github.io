@@ -1,0 +1,107 @@
+html {
+    background-image: url("images/Background1.png");
+}
+
+main {
+    width: 100%;
+    height: inherit;   
+    right: 0%;
+    top: 0%;
+
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+
+h1 {
+    padding-top: 35%;
+    color: rgba(200, 55, 40, 1);
+    text-align: center;
+    font-family: "Berkshire Swash", cursive;
+    font-size: 1100%;
+}
+
+.fgflower {
+    width: 50%;
+    position: fixed;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+}
+#flower_br {
+    bottom: 28%;
+    left: 55%;
+    animation-name: flowerbr;
+
+
+}
+#flower_tl {
+    top: 12%;
+    transition: width 1s;
+    animation-name: flowertl;
+}
+
+#Marissa {
+    color: rgb(128, 28, 3);
+    animation-name: Marissaa;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+p {
+    margin: 0% 15% 120% 15%;
+    padding: 5% 5% 5% 5%;
+    border-radius: 40px;
+
+    background-color: white;
+
+    animation-name: pp;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pp {
+    0% {background-color: rgb(255, 255, 255))}
+    50% {background-color: rgb(245, 190, 184);}
+    100% {background-color: rgb(255, 255, 255);}
+  }
+
+  @keyframes Marissaa {
+    0% {color: rgb(128, 28, 3)}
+    50% {color: rgb(194, 24, 89);}
+    100% {color: rgb(128, 28, 3);}
+  }
+
+  
+  @keyframes flowerbr {
+    0% {left: 55%;
+        transform: rotate(0deg)}
+    10% {left: 55%;
+        transform: rotate(0deg)}
+    45% {left: 0%;
+        transform: rotate(90deg)}
+    55% {left: 0%;
+        transform: rotate(90deg)}
+    100% {left: 55%;
+        transform: rotate(0deg)}
+  }
+
+  @keyframes flowertl {
+    0% {left: 0%;
+        transform: rotate(0deg)}
+    10% {left: 0%;
+        transform: rotate(0deg)}
+    45% {left: 55%;
+        transform: rotate(90deg)}
+    55% {left: 55%;
+        transform: rotate(90deg)}
+    100% {left: 0%;
+        transform: rotate(0deg)}
+  }
+
+
+
+
+@media only screen and (min-width: 1000px){
+
+}
