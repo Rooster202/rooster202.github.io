@@ -5,6 +5,10 @@
         <title>Marissa -->Click Here--</title>
         <link href="maincss.css" type="text/css" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
+        <script>
+            var compliment = 0;
+            var compliments = ["Beautiful", "Smart", "Pretty", "Fun", "Nice"];
+        </script>
     </head>
     <body >
         
@@ -15,7 +19,19 @@
         <img src="images/corner_flower_br_t.png" class="fgflower" id="flower_br"></img>
 
         <br><br><br><br><br>
-        <p>Hope you have a good day and can't wait to hang out with you again! -Reuben</p>
+        <p>I don't know if I made it very clear, but I really like you! I think you're really <span id="complimentt"></span>. <br><br>-Reuben</p>
+
+        <script>
+            setInterval(() => {
+                document.getElementById("complimentt").innerHTML = compliments[compliment];
+                compliment += 1;
+                if (compliment >= compliments.length){
+                    compliment = 0;
+                } else{
+
+                }
+            }, 1000)
+        </script>
 
 
     </body>
