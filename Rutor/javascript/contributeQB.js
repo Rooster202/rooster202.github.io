@@ -15,5 +15,6 @@ contributeForm.addEventListener('submit', (e)=>{
     workingOut: contributeForm['workingOutInput'].value.replaceAll("\n", "</br>"),
     tech: contributeForm['tech'].value
   });    
+  window.location.href = "./index.html"
 })
 //console.log(database.ref('Questions/question1').val())

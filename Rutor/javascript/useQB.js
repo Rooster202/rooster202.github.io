@@ -5,6 +5,7 @@ generateButton = document.querySelector('#generateButton')
 questionZone = document.querySelector('#questionZone')
 questionForm = document.querySelector('#findQstnForm')
 
+qSnapshotList = []
 questionList = []
 
 
@@ -12,6 +13,7 @@ questionList = []
 
 questionForm.addEventListener('submit', function(e){
     e.preventDefault()
+    questionList = []
     while(questionZone.hasChildNodes()){
         questionZone.removeChild(questionZone.firstChild)
     }
@@ -19,39 +21,9 @@ questionForm.addEventListener('submit', function(e){
     database.ref('questions/'+questionForm['subject'].value+'/'+questionForm['unit'].value).once("value", function(snapshot){
         
         snapshot.forEach(function(childSnapshot){
+            //qSnapshotList.append([childSnapshot.val(), childSnapshot.key])
             childSnapshotData = childSnapshot.val()
 
-            var LINE = document.createElement("hr")
-
-            var nQstnInfo = document.createElement("div")
-            nQstnInfo.className = "QstnInfo";
-
-            var nQstnDiff = document.createElement("span")
-            nQstnDiff.innerHTML = childSnapshotData["difficulty"]+ ' | '
-            nQstnInfo.appendChild(nQstnDiff)
-
-            var nQstnTech = document.createElement("span")
-            nQstnTech.innerHTML = childSnapshotData["tech"]+ ' | '
-            nQstnInfo.appendChild(nQstnTech)
-
-            var nQstnCont = document.createElement("span")
-            nQstnCont.innerHTML = childSnapshotData["contributer"]+ ' | '
-            nQstnInfo.appendChild(nQstnCont)
-
-            var nQstnId = document.createElement("span")
-            nQstnId.innerHTML = "ID: "+childSnapshot.key
-            nQstnInfo.appendChild(nQstnId)
-
-            var nQstnEl = document.createElement("li")
-            nQstnEl.innerHTML = childSnapshotData["question"];
-            nQstnEl.className = "question";  
-
-            var nQstnAnsLabel = document.createElement("span")
-            //nQstnAnsLabel.className = "QstnAnswer"
-            nQstnAnsLabel.innerHTML = "ANSWER: <br>"
-            var nQstnAns = document.createElement("span")
-            nQstnAns.className = "QstnAnswer"
-            nQstnAns.innerHTML = childSnapshotData["answer"]
 
 
             if((questionForm["SF"].checked == false) && (childSnapshotData["difficulty"] == "Simple Familiar")){
@@ -68,24 +40,70 @@ questionForm.addEventListener('submit', function(e){
                 console.log("Dunno Question Excluded")
             }else{
                 console.log("Question "+ childSnapshot.key+ " not excluded")
-                questionZone.appendChild(nQstnInfo)
-                questionZone.appendChild(nQstnEl)
-                questionZone.appendChild(nQstnAnsLabel)
-                questionZone.appendChild(nQstnAns)
-                questionZone.appendChild(LINE)
+                questionList.push([childSnapshotData, childSnapshot.key])
             }
 
+        })
+
+        shuffle(questionList);
+
+        questionList.forEach(function(question){
+            var LINE = document.createElement("hr")
+    
+            var nQstnInfo = document.createElement("div")
+            nQstnInfo.className = "QstnInfo";
+    
+            var nQstnDiff = document.createElement("span")
+            nQstnDiff.innerHTML = question[0]["difficulty"]+ ' | '
+            nQstnInfo.appendChild(nQstnDiff)
+    
+            var nQstnTech = document.createElement("span")
+            nQstnTech.innerHTML = question[0]["tech"]+ ' | '
+            nQstnInfo.appendChild(nQstnTech)
+    
+            var nQstnCont = document.createElement("span")
+            nQstnCont.innerHTML = question[0]["contributer"]+ ' | '
+            nQstnInfo.appendChild(nQstnCont)
+    
+            var nQstnId = document.createElement("span")
+            nQstnId.innerHTML = "ID: "+question[1]
+            nQstnInfo.appendChild(nQstnId)
+    
+            var nQstnEl = document.createElement("li")
+            nQstnEl.innerHTML = question[0]["question"];
+            nQstnEl.className = "question";  
+    
+            var nQstnAnsLabel = document.createElement("span")
+            nQstnAnsLabel.innerHTML = "ANSWER: <br>"
+            var nQstnAns = document.createElement("span")
+            nQstnAns.className = "QstnAnswer"
+            nQstnAns.innerHTML = question[0]["answer"]
+    
+    
+    
+    
+            questionZone.appendChild(nQstnInfo)
+            questionZone.appendChild(nQstnEl)
+            questionZone.appendChild(nQstnAnsLabel)
+            questionZone.appendChild(nQstnAns)
+            questionZone.appendChild(LINE)
         })
         
     })
     
-    /*
-    database.ref('questions/1').on('value', function(snapshot){
-        console.log(snapshot.val())
-        var nElement = document.createElement("li")
-        nElement.innerHTML = snapshot.val();  
-        questionZone.appendChild(nElement)
-    })
-    */
+    
      
 })
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+  
+      // swap elements array[i] and array[j]
+      // we use "destructuring assignment" syntax to achieve that
+      // you'll find more details about that syntax in later chapters
+      // same can be written as:
+      // let t = array[i]; array[i] = array[j]; array[j] = t
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
