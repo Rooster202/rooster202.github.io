@@ -10,9 +10,9 @@ contributeForm.addEventListener('submit', (e)=>{
   database.ref('questions/'+contributeForm['subject'].value+'/'+contributeForm['unit'].value+'/'+Math.round(Math.random()*100000000)).set({
     difficulty: contributeForm['difficulty'].value,
     contributer: contributeForm['contributer'].value,
-    question: contributeForm['questionInput'].value,
-    answer: contributeForm['answerInput'].value,
-    workingOut: contributeForm['workingOutInput'].value,
+    question: contributeForm['questionInput'].value.replaceAll("\n", "</br>"),
+    answer: contributeForm['answerInput'].value.replaceAll("\n", "</br>"),
+    workingOut: contributeForm['workingOutInput'].value.replaceAll("\n", "</br>"),
     tech: contributeForm['tech'].value
   });    
 })

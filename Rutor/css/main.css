@@ -7,8 +7,24 @@ body {
     margin-right: 0%;
 }
 
+.pageContent {
+    background-color: white;
+    margin-left: 19%;
+    margin-right: 20%;
+
+    padding: 1%;
+}
+
 p {
     margin: 0%;
+}
+
+textarea{
+    width: 50%;
+}
+
+hr {
+    border: dashed lightblue 1px;
 }
 
 h1 {
@@ -18,11 +34,17 @@ h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-li {
-    font-size: 150%;
-    border: solid black 1px ;
-    text-align: center;
+h2{
+    margin: 0%;
+}
 
+li {
+    list-style-type: none;
+    font-size: 150%;
+    background-color: rgb(255, 215, 200);
+    text-align: center;
+    color: black;
+    border: solid rgb(206, 224, 255) 10px;
 
     margin-left: 30%;
     margin-bottom: 5%;
@@ -32,21 +54,39 @@ li {
     
 }
 
+li.butt{
+    cursor:pointer;
+}
+li.butt:hover{
+    border: solid red 10px;
+}
+
 .nav {
+    text-align: center;
     color: black;
     position: fixed;
-    width: 36%;
-    padding-left: 1%;
+    width: 20%;
+    padding-left: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     margin-top: 0%;
-    padding-top: 0%;
     margin-left: 0%;
     background: rgb(225, 215, 255);
 }
+.nav p{
+    font-size:80%;
+}
 
 #homeButton {
+    cursor: pointer;
     border: solid black 1px;
-    padding: 0.5% 0.5%;
+    padding: 0.5% 2% 0.5% 2%;
     background-color: rgb(255, 215, 235);
+    margin-right: 5%;
+    font-size: 200%;
+}
+#homeButton:hover {
+    background-color: white;
 }
 
 #BigR {
@@ -57,11 +97,12 @@ li {
 #Logo {
     margin-top: 0.5%;
     text-decoration: underline solid rgb(109, 185, 94) 13px;
-    text-decoration-line: ;
 }
 
 .question {
-    background-color: white;
+    list-style-type: none;
+    border: dashed black 1px;
+    background-color: lightgrey;
     color: black;
     font-size: 100%;
     text-align: left;
