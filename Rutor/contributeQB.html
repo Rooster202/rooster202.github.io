@@ -17,9 +17,9 @@
         <div class="pageContent">
             <h2>Contribute a question:</h2>
 
-            <form id="newQstnForm">
+            <form id="newQstnForm" autocomplete="off">
                 <label for='subject'>Subject:</label>
-                <select id="subject" >
+                <select name="subject" >
                     <option>Chemistry</option>
                     <option>Physics</option>
                     <option>Maths Methods</option>
@@ -50,17 +50,20 @@
                     <option>Dunno</option>
                 </select><br>
 
+                <label for="topic">Topic: </label>
+                <span class="autoComplete"><input name="topic"placeholder="Topic" required></span><br>
+
                 <label for="contributer">Contributer: </label>
-                <input id="contributer"placeholder="YOUR NAME" required><br>
+                <input name="contributer"placeholder="YOUR NAME" required><br>
 
                 <label for="questionInput">Write your question here:</label><br>
                 <textarea required id="questionInput"placeholder="QUESTION"></textarea><br>
 
-                <label for="answerInput">Write your answer here (if answer not known, leave blank):</label><br>
+                <label for="answerInput">Write your answer here, incuding working out if possible (if answer not known, leave blank):</label><br>
                 <textarea id="answerInput"placeholder="ANSWER"></textarea><br>
-
-                <label for="workingOutInput">Write your working out here (or leave blank):</label><br>
-                <textarea id="workingOutInput"placeholder="WORKING OUT"></textarea><br>
+                
+                <!-- <label for="workingOutInput">Write your working out here (or leave blank):</label><br>
+                <textarea id="workingOutInput"placeholder="WORKING OUT"></textarea><br> -->
 
                 <br><br>
                 <input id='contributeButton' type='submit' value="Contribute Question">

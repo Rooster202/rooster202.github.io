@@ -15,9 +15,20 @@ body {
     padding: 1%;
 }
 
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+}
+
+.errorMessages{
+    color: red;
+}
+
 p {
     margin: 0%;
 }
+
 
 textarea{
     width: 50%;
@@ -120,3 +131,36 @@ li.butt:hover{
     align-self: center;
     text-align: center;
 }
+
+
+.autocomplete-items {
+    /* position: absolute; */
+    /* border: 1px solid #d4d4d4; */
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+
+    background-color: #e9e9e9;
+  }
+  .autocomplete-active {
+
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+*/
+  
