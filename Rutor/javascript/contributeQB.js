@@ -37,10 +37,24 @@ contributeForm.addEventListener('submit', (e)=>{
     tech: contributeForm['tech'].value,
     topic: contributeForm["topic"].value
   });
-  database.ref("topics/"+contributeForm["subject"].value+"/"+contributeForm["unit"].value).push().set({
-    name: contributeForm["topic"].value
+  database.ref("topics/"+contributeForm["subject"].value+"/"+contributeForm["unit"].value).once("value", function(snapshot){
+    pushTopic = true
+    snapshot.forEach(function(child){
+      if(child.val()["name"] == contributeForm["topic"].value){
+        pushTopic = false
+      }
+    })
+    if(pushTopic){
+      database.ref("topics/"+contributeForm["subject"].value+"/"+contributeForm["unit"].value).push().set({
+        name: contributeForm["topic"].value
+      })
+    }
   })
-  window.location.href = "./index.html"
+
+  window.setTimeout(function(){
+    window.location.href = "./index.html"
+  }, 500)
+  
 })
 //console.log(database.ref('Questions/question1').val())
 
