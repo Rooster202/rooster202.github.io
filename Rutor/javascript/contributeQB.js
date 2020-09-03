@@ -26,9 +26,16 @@ contributeForm["topic"].addEventListener("focus", (e)=>{
 
 contributeForm.addEventListener('submit', (e)=>{
   e.preventDefault();
+  //change if you want to allow anonymous contributions
+  if (auth.currentUser == null) {e.target.nextElementSibling.innerHTML = "You must be signed in to contribute"}
+  
+  else if (auth.currentUser.email.slice(0, auth.currentUser.email.lastIndexOf('@'))) {
+    e.target.nextElementSibling.innerHTML = "Your contributor name must be the same as your username";
+  }
+  else {
   console.log("Form_Submitted")
   console.log("Form submitted by "+contributeForm['contributer'].value)
-  database.ref('questions/'+contributeForm['subject'].value+'/'+contributeForm['unit'].value+'/'+Math.round(Math.random()*100000000)).set({
+  database.ref(`questions/${contributeForm['subject'].value}/${contributeForm['unit'].value}/${Math.round(Math.random()*100000000)}`).set({
     difficulty: contributeForm['difficulty'].value,
     contributer: contributeForm['contributer'].value,
     question: contributeForm['questionInput'].value.replaceAll("\n", "</br>"),
@@ -54,7 +61,7 @@ contributeForm.addEventListener('submit', (e)=>{
   window.setTimeout(function(){
     window.location.href = "./index.html"
   }, 500)
-  
+}
 })
 //console.log(database.ref('Questions/question1').val())
 

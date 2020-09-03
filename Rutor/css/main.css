@@ -182,6 +182,7 @@ li.butt:hover{
       top: 2%;
       cursor: pointer;
       color: black;
+      text-align: center;
   }
   
   #signup_form {
