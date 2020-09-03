@@ -1,14 +1,18 @@
 const $ = ele => {return document.getElementById(ele)}
 
 auth.onAuthStateChanged(user => {
-    if (user) {$('signup_button').innerHTML = `Welcome, ${user.email.slice(0, user.email.lastIndexOf('@'))}<br>Logout`}
+    if (user) {$('signup_button').innerHTML = `Welcome, ${user.email.slice(0, user.email.lastIndexOf('@'))}<br><p>Logout</p><br><p>Account</p>`}
 })
+
 
 $('signup_button').addEventListener('click', e => {
     if (e.target.innerHTML == "Login/Signup") {
     $('signup_form').style.display = $('signup_form').style.display == "block" ? "none" : "block";}
-    else {
+    else if (e.target.innerHTML == "Logout") {
         auth.signOut().then(() => location.reload());
+    }
+    else {
+        location.assign('account.html')
     }
 })
 $('signup_form').getElementsByTagName('form')[0].addEventListener('submit', e => {
