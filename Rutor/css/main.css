@@ -137,9 +137,15 @@ li.butt:hover{
     font-size: 80%;
 }
 
+.QstnAnswerLabel {
+    background-color: rgb(206, 194, 194);
+    cursor: pointer;
+    padding: 0.5%;
+    border: solid grey 1pt;
+}
 .QstnAnswer {
     color: black;
-    background-color: black;
+    display: none;
     align-self: center;
     text-align: center;
 }

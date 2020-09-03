@@ -150,12 +150,16 @@ updateTopicDiv = function(){
                     nQstnEl.className = "question";  
             
                     var nQstnAnsLabel = document.createElement("span")
-                    nQstnAnsLabel.innerHTML = "ANSWER: <br>"
+                    nQstnAnsLabel.innerHTML = "Reveal Answer";
+                    nQstnAnsLabel.setAttribute('class','QstnAnswerLabel')
                     var nQstnAns = document.createElement("span")
                     nQstnAns.className = "QstnAnswer"
                     nQstnAns.innerHTML = question[0]["answer"]
             
-            
+                    nQstnAnsLabel.addEventListener('click', e => {
+                        e.target.nextElementSibling.style.display = getComputedStyle(e.target.nextElementSibling).display != "none" ? "none" : "block";
+                        e.target.innerHTML = getComputedStyle(e.target.nextElementSibling).display != "none" ? "Hide Answer" : "Reveal Answer";
+                    })
             
             
                     questionZone.appendChild(nQstnInfo)
